@@ -1,9 +1,9 @@
-const APILINK = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=3cff4c467489097e6e6b7b8a18e3b699&page=1";
-const IMG_PATH = "https://image.tmbd.org/t/p/w1280";
-const SEARCHAPI = "https://api.themoviedb/org/3/search/movie?&api_key=3cff4c467489097e6e6b7b8a18e3b699&query=";
+const APILINK = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=41ee980e4b5f05f6693fda00eb7c4fd4&page=1";
+const IMG_PATH = "https://image.tmdb.org/t/p/w1280";
+const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=41ee980e4b5f05f6693fda00eb7c4fd4&query=";
+const main = document.getElementById("section");
 const form = document.getElementById("form");
 const search = document.getElementById("query");
-const section = document.getElementById("section");
 returnMovies(APILINK);
 function returnMovies(url) {
     fetch(url).then((res)=>res.json()).then(function(data) {
@@ -28,13 +28,13 @@ function returnMovies(url) {
             div_card.appendChild(title);
             div_column.appendChild(div_card);
             div_row.appendChild(div_column);
-            section.appendChild(div_row);
+            main.appendChild(div_row);
         });
     });
 }
 form.addEventListener("submit", (e)=>{
     e.preventDefault();
-    section.innerHTML = "";
+    main.innerHTML = "";
     const searchItem = search.value;
     if (searchItem) {
         returnMovies(SEARCHAPI + searchItem);
